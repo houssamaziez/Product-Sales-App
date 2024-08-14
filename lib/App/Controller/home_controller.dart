@@ -2,11 +2,14 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../Model/product_model.dart';
+import '../RouteEndPoint/EndPoint.dart';
 
 class ProductController extends GetxController {
   // Reactive state
+  var isLoadingadd = false;
   var isLoading = false;
   var product = Rxn<Product>();
+  List<ProductData> listProduct = [];
 
   Future<void> addProduct({
     required String name,
@@ -15,9 +18,9 @@ class ProductController extends GetxController {
     required double price,
     required int userId,
   }) async {
-    isLoading = true; // Set loading to true
+    isLoadingadd = true; // Set loading to true
     update();
-    final url = Uri.parse('http://192.168.1.17:8000/api/products/add');
+    final url = Uri.parse(Endpoint.apiproductsadd);
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -43,7 +46,7 @@ class ProductController extends GetxController {
         product.value = Product.fromJson(responseData);
         if (product.value?.state.toString() == '105') {
           print(product.value!.state);
-
+          fetchProduct();
           Get.snackbar("Success",
               product.value?.message ?? "Product created successfully");
         } else {
@@ -72,7 +75,37 @@ class ProductController extends GetxController {
     } catch (e) {
       Get.snackbar("Error", "An error occurred: $e");
     } finally {
-      isLoading = false; // Set loading to false
+      isLoadingadd = false; // Set loading to false
+      update();
+    }
+  }
+
+  Future<void> fetchProduct() async {
+    try {
+      isLoading = true;
+      update();
+      final response = await http.get(
+        Uri.parse(Endpoint.apiproductsgetAll),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final List<dynamic> _productList = data['data'];
+        print(_productList);
+        listProduct =
+            _productList.map((item) => ProductData.fromJson(item)).toList();
+        print(listProduct.first.name);
+
+        update();
+      } else {
+        print('Failed to load products: ${response.statusCode}');
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      isLoading = false;
       update();
     }
   }

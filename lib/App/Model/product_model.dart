@@ -33,6 +33,8 @@ class ProductData {
   final double price;
   final int quantity;
   final int userId;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   ProductData({
     required this.id,
@@ -41,6 +43,8 @@ class ProductData {
     required this.price,
     required this.quantity,
     required this.userId,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   factory ProductData.fromJson(Map<String, dynamic> json) {
@@ -51,6 +55,8 @@ class ProductData {
       price: double.parse(json['price'] as String),
       quantity: int.parse(json['quantity'] as String),
       userId: int.parse(json['user_id'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
+      updatedAt: DateTime.parse(json['updated_at'] as String),
     );
   }
 
@@ -62,6 +68,8 @@ class ProductData {
       'price': price.toString(),
       'quantity': quantity.toString(),
       'user_id': userId.toString(),
+      'created_at': createdAt.toIso8601String(),
+      'updated_at': updatedAt.toIso8601String(),
     };
   }
 }
