@@ -40,7 +40,7 @@ class ButtonAll extends StatelessWidget {
                   width: islogin == true ? 10 : 0,
                 ),
                 Text(
-                  islogin == true ? 'جاري التحقق ...' : title,
+                  islogin == true ? 'Verifying ...' : title,
                   style: TextStyle(color: Colors.white),
                 ),
                 Spacer(),

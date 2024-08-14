@@ -26,6 +26,7 @@ ThemeData themeLight = ThemeData(
     ),
   ),
   appBarTheme: const AppBarTheme(
+    iconTheme: IconThemeData(color: Colors.white),
     backgroundColor: Color(0xff1073BA),
     elevation: 0,
     centerTitle: true,

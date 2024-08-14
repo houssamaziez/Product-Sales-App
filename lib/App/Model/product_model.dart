@@ -27,24 +27,24 @@ class Product {
 }
 
 class ProductData {
-  final int id;
+  final id;
   final String name;
   final String description;
   final double price;
   final int quantity;
   final int userId;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final createdAt;
+  final updatedAt;
 
   ProductData({
-    required this.id,
+    this.id,
     required this.name,
     required this.description,
     required this.price,
     required this.quantity,
     required this.userId,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory ProductData.fromJson(Map<String, dynamic> json) {
