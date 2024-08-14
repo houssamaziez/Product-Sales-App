@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StyleContainer {
-  static BoxDecoration style1 = BoxDecoration(
+  static BoxDecoration style1 = const BoxDecoration(
       color: Color(0xffF5F6FA),
       borderRadius: BorderRadius.all(Radius.circular(12)));
 

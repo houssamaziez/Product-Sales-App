@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:product_sales_app/App/View/Widgets/Messages/snack_bar.dart';
 import 'dart:convert';
 import '../Model/product_model.dart';
 import '../RouteEndPoint/EndPoint.dart';
@@ -11,7 +12,8 @@ class ProductController extends GetxController {
   var product = Rxn<Product>();
   List<ProductData> listProduct = [];
 
-  Future<void> addProduct({
+  Future<void> addProduct(
+    context, {
     required String name,
     required String description,
     required int quantity,
@@ -46,7 +48,7 @@ class ProductController extends GetxController {
         product.value = Product.fromJson(responseData);
         if (product.value?.state.toString() == '105') {
           print(product.value!.state);
-          fetchProduct();
+          fetchProduct(context);
           Get.snackbar("Success",
               product.value?.message ?? "Product created successfully");
         } else {
@@ -80,7 +82,7 @@ class ProductController extends GetxController {
     }
   }
 
-  Future<void> fetchProduct() async {
+  Future<void> fetchProduct(context) async {
     try {
       isLoading = true;
       update();
@@ -101,9 +103,11 @@ class ProductController extends GetxController {
         update();
       } else {
         print('Failed to load products: ${response.statusCode}');
+        showMessage(context, title: "حدث خطأ");
       }
     } catch (e) {
       print(e);
+      showMessage(context, title: "حدث خطأ");
     } finally {
       isLoading = false;
       update();

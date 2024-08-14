@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_sales_app/App/View/Widgets/flutter_spinkit.dart';
 
-import '../../../Controller/home_controller.dart';
-import '../../../Model/product_model.dart';
+import '../../../Controller/product_controller.dart';
 
 class AddProductScreen extends StatefulWidget {
   @override
@@ -14,7 +13,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final ProductController productController = Get.put(ProductController());
   @override
   void initState() {
-    productController.fetchProduct();
+    productController.fetchProduct(context);
     super.initState();
   }
 
@@ -25,10 +24,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
           init: ProductController(),
           builder: (controller) {
             return controller.isLoadingadd
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : ElevatedButton(
                     onPressed: () {
                       productController.addProduct(
+                        context,
                         name: "nameTest",
                         description: "description",
                         quantity: 2,
@@ -36,24 +36,24 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         userId: 2,
                       );
                     },
-                    child: Text('Add Product'),
+                    child: const Text('Add Product'),
                   );
           }),
       appBar: AppBar(
-        title: Text('Add Product'),
+        title: const Text('Add Product'),
       ),
       body: GetBuilder<ProductController>(
           init: ProductController(),
           builder: (_controller) {
             return _controller.isLoading == true
-                ? Center(child: spinkit)
+                ? const Center(child: spinkit)
                 : ListView.builder(
                     itemCount: _controller.listProduct.length,
                     itemBuilder: (coontext, index) {
                       return Card(
                         child: ListTile(
                           title: Text(
-                            _controller.listProduct[index].name!,
+                            _controller.listProduct[index].name,
                           ),
                         ),
                       );

@@ -23,7 +23,7 @@ class ConnectivityController extends GetxController {
     });
 
     // Start periodic internet connectivity check
-    _checkInternetTimer = Timer.periodic(Duration(seconds: 10), (timer) {
+    _checkInternetTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
       _checkInternetStatus();
     });
   }
@@ -53,7 +53,7 @@ class ConnectivityController extends GetxController {
   Future<bool> _hasInternetConnection() async {
     try {
       final response = await http.get(Uri.parse('https://8.8.8.8')).timeout(
-            Duration(seconds: 5),
+            const Duration(seconds: 5),
             onTimeout: () => http.Response('Error', 408),
           );
       return response.statusCode == 200;
@@ -66,16 +66,16 @@ class ConnectivityController extends GetxController {
     _isDialogShowing = true;
     Get.dialog(
       AlertDialog(
-        title: Text('لا يوجد اتصال بالإنترنت'),
+        title: const Text('لا يوجد اتصال بالإنترنت'),
         content: Container(
           height: 160,
           child: Column(
             children: [
               Image.asset(
                 'assets/icons/wi-fi.png',
-                height: 140,
+                height: 110,
               ),
-              Text('يرجى التحقق من اتصالك بالإنترنت.'),
+              const Text('يرجى التحقق من اتصالك بالإنترنت.'),
             ],
           ),
         ),
@@ -85,7 +85,7 @@ class ConnectivityController extends GetxController {
               Get.back(); // Close the dialog
               _isDialogShowing = false;
             },
-            child: Text('تم'),
+            child: const Text('تم'),
           ),
         ],
       ),
