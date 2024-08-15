@@ -7,8 +7,9 @@ import 'package:product_sales_app/App/View/Screens/Home/screen_Edite_product.dar
 import 'package:product_sales_app/App/View/Widgets/flutter_spinkit.dart';
 
 import '../../../Controller/product_controller.dart';
-import '../../../Model/product_model.dart';
+import '../../../Model/product_mod.dart';
 import '../../../Util/Date/formatDate.dart';
+import '../../Widgets/Dialog/delete.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({super.key});
@@ -156,7 +157,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                     ),
                                     Spacer(),
                                     IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          showDeleteDialog(
+                                            coontext,
+                                            () {
+                                              productController.deleteProduct(
+                                                  context,
+                                                  id: data.id);
+                                            },
+                                          );
+                                        },
                                         icon: Icon(
                                           Icons.delete_outline_rounded,
                                           color: Colors.red,

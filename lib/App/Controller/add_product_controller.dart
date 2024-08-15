@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:product_sales_app/App/Controller/product_controller.dart';
 
-import '../Model/product_model.dart';
+import '../Model/product_mod.dart';
 
 class ScreenAddProductController extends GetxController {
   final TextEditingController nameController = TextEditingController();

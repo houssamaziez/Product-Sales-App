@@ -4,16 +4,15 @@ import 'package:http/http.dart' as http;
 import 'package:product_sales_app/App/Util/Go.dart';
 import 'package:product_sales_app/App/View/Widgets/Messages/snack_bar.dart';
 import 'dart:convert';
-import '../Model/product_model.dart';
+import '../Model/product_mod.dart';
 import '../RouteEndPoint/EndPoint.dart';
 
 class ProductController extends GetxController {
-  // Reactive state
+  // Reactive statez
   var isLoadingadd = false;
   var isLoading = false;
   var product = Rxn<Product>();
   List<ProductData> listProduct = [];
-// http://192.168.1.17:8000/api/products/update/5?name=edzefe&description=dze&price=11&quantity
   Future<void> addProduct(
     context, {
     required String name,
@@ -178,6 +177,56 @@ class ProductController extends GetxController {
       showMessage(context, title: "حدث خطأ");
     } finally {
       isLoading = false;
+      update();
+    }
+  }
+
+  Future<void> deleteProduct(
+    context, {
+    required int id,
+  }) async {
+    update();
+    final url = Uri.parse(Endpoint.apiproductsDelete + '/$id');
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    };
+
+    try {
+      final response = await http.delete(
+        url,
+        headers: headers,
+      );
+
+      if (response.statusCode == 200) {
+        fetchProduct(context);
+        Get.snackbar(
+            "Success", product.value?.message ?? "Product delete successfully",
+            backgroundColor: Colors.green[200]);
+        Go.back(context);
+      } else if (response.statusCode == 422) {
+        final Map<String, dynamic> errorData = json.decode(response.body);
+        if (errorData.containsKey('errors')) {
+          String errorMessages = "";
+          errorData['errors'].forEach((key, value) {
+            errorMessages += "${value.join(", ")}\n";
+          });
+          Get.snackbar("Validation Error", errorMessages.trim());
+        } else {
+          Get.snackbar(
+            "Error",
+            "Failed to delete product: ${response.reasonPhrase}",
+          );
+        }
+      } else {
+        Get.snackbar(
+          "Error",
+          "Failed to delete product: ${response.reasonPhrase}",
+        );
+      }
+    } catch (e) {
+      Get.snackbar("Error", "An error occurred: $e");
+    } finally {
       update();
     }
   }
