@@ -4,14 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:product_sales_app/App/Util/Go.dart';
 import 'package:product_sales_app/App/View/Widgets/Messages/snack_bar.dart';
 import 'dart:convert';
-import '../Model/product_mod.dart';
+import '../Model/product_data.dart';
 import '../RouteEndPoint/EndPoint.dart';
 
 class ProductController extends GetxController {
   // Reactive statez
   var isLoadingadd = false;
   var isLoading = false;
-  var product = Rxn<Product>();
+  var product = Rxn<ProductRespons>();
   List<ProductData> listProduct = [];
   Future<void> addProduct(
     context, {
@@ -46,7 +46,7 @@ class ProductController extends GetxController {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
-        product.value = Product.fromJson(responseData);
+        product.value = ProductRespons.fromJson(responseData);
         if (product.value?.state.toString() == '105') {
           print(product.value!.state);
           fetchProduct(context);
@@ -110,7 +110,7 @@ class ProductController extends GetxController {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> responseData = json.decode(response.body);
-        product.value = Product.fromJson(responseData);
+        product.value = ProductRespons.fromJson(responseData);
         if (product.value?.state.toString() == '105') {
           print(product.value!.state);
           fetchProduct(context);

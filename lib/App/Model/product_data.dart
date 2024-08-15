@@ -1,16 +1,20 @@
-class Product {
+import 'package:hive/hive.dart';
+
+part 'product_data.g.dart';
+
+class ProductRespons {
   final String message;
   final ProductData data;
   final String state;
 
-  Product({
+  ProductRespons({
     required this.message,
     required this.data,
     required this.state,
   });
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
+  factory ProductRespons.fromJson(Map<String, dynamic> json) {
+    return ProductRespons(
       message: json['message'] as String,
       data: ProductData.fromJson(json['data'] as Map<String, dynamic>),
       state: json['state'] as String,
@@ -26,15 +30,31 @@ class Product {
   }
 }
 
+@HiveType(typeId: 1)
 class ProductData {
-  final id;
+  @HiveField(0)
+  final int? id;
+
+  @HiveField(1)
   final String name;
+
+  @HiveField(2)
   final String description;
+
+  @HiveField(3)
   final double price;
+
+  @HiveField(4)
   final int quantity;
+
+  @HiveField(5)
   final int userId;
-  final createdAt;
-  final updatedAt;
+
+  @HiveField(6)
+  final DateTime? createdAt;
+
+  @HiveField(7)
+  final DateTime? updatedAt;
 
   ProductData({
     this.id,
@@ -68,8 +88,8 @@ class ProductData {
       'price': price.toString(),
       'quantity': quantity.toString(),
       'user_id': userId.toString(),
-      'created_at': createdAt.toIso8601String(),
-      'updated_at': updatedAt.toIso8601String(),
+      'created_at': createdAt?.toIso8601String(),
+      'updated_at': updatedAt?.toIso8601String(),
     };
   }
 }

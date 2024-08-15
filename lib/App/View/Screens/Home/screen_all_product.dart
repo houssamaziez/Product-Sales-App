@@ -7,7 +7,7 @@ import 'package:product_sales_app/App/View/Screens/Home/screen_Edite_product.dar
 import 'package:product_sales_app/App/View/Widgets/flutter_spinkit.dart';
 
 import '../../../Controller/product_controller.dart';
-import '../../../Model/product_mod.dart';
+import '../../../Model/product_data.dart';
 import '../../../Util/Date/formatDate.dart';
 import '../../Widgets/Dialog/delete.dart';
 
@@ -163,7 +163,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                             () {
                                               productController.deleteProduct(
                                                   context,
-                                                  id: data.id);
+                                                  id: data.id!);
                                             },
                                           );
                                         },

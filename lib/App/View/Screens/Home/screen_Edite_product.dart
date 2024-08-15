@@ -4,7 +4,7 @@ import 'package:product_sales_app/App/Controller/add_product_controller.dart';
 import 'package:product_sales_app/App/View/Widgets/buttonall.dart';
 
 import '../../../Controller/product_controller.dart';
-import '../../../Model/product_mod.dart';
+import '../../../Model/product_data.dart';
 
 class EditeProductScreen extends StatefulWidget {
   EditeProductScreen({super.key, required this.data});
@@ -33,7 +33,7 @@ class _EditeProductScreenState extends State<EditeProductScreen> {
         description: descriptionController!.text,
         quantity: int.parse(quantityController!.text),
         price: double.parse(priceController!.text),
-        id: widget.data.id,
+        id: widget.data.id!,
       );
     } else {
       Get.snackbar('Error', 'Please fill out all fields');

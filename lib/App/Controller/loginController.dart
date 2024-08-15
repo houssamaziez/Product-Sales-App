@@ -11,7 +11,6 @@ import '../View/Widgets/Messages/snack_bar.dart';
 
 class LoginController extends GetxController {
   bool isLoading = false;
-  // TeacherUser? user;
   String errorMessage = '';
 
   Future<void> login(
