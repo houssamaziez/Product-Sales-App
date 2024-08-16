@@ -1,77 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_sales_app/App/Controller/add_product_controller.dart';
+import 'package:product_sales_app/App/Controller/Product/add_product_controller.dart';
 import 'package:product_sales_app/App/View/Widgets/buttonall.dart';
 
-import '../../../Controller/product_controller.dart';
-import '../../../Model/product_data.dart';
+import '../../../../../Controller/Product/product_controller.dart';
 
-class EditeProductScreen extends StatefulWidget {
-  EditeProductScreen({super.key, required this.data});
-  final ProductData data;
+class AddProductScreen extends StatelessWidget {
+  final ScreenAddProductController productController =
+      Get.put(ScreenAddProductController());
 
-  @override
-  State<EditeProductScreen> createState() => _EditeProductScreenState();
-}
-
-class _EditeProductScreenState extends State<EditeProductScreen> {
-  TextEditingController? nameController;
-  TextEditingController? descriptionController;
-  TextEditingController? priceController;
-  TextEditingController? quantityController;
-
-  void submitProduct(context) {
-    final ProductController productController = Get.put(ProductController());
-
-    if (nameController!.text.isNotEmpty &&
-        descriptionController!.text.isNotEmpty &&
-        priceController!.text.isNotEmpty &&
-        quantityController!.text.isNotEmpty) {
-      productController.editeProduct(
-        context,
-        name: nameController!.text,
-        description: descriptionController!.text,
-        quantity: int.parse(quantityController!.text),
-        price: double.parse(priceController!.text),
-        id: widget.data.id!,
-      );
-    } else {
-      Get.snackbar('Error', 'Please fill out all fields');
-    }
-  }
-
-  void clearForm() {
-    nameController!.clear();
-    descriptionController!.clear();
-    priceController!.clear();
-    quantityController!.clear();
-  }
-
-  @override
-  void initState() {
-    descriptionController =
-        TextEditingController(text: widget.data.description);
-    nameController = TextEditingController(text: widget.data.name);
-    priceController = TextEditingController(text: widget.data.price.toString());
-    quantityController =
-        TextEditingController(text: widget.data.quantity.toString());
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    nameController!.dispose();
-    descriptionController!.dispose();
-    priceController!.dispose();
-    quantityController!.dispose();
-    super.dispose();
-  }
+  AddProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edite Product'),
+        title: const Text('Add Product'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -79,7 +23,7 @@ class _EditeProductScreenState extends State<EditeProductScreen> {
           child: ListView(
             children: [
               TextFormField(
-                controller: nameController,
+                controller: productController.nameController,
                 decoration: const InputDecoration(labelText: 'Product Name'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -94,7 +38,7 @@ class _EditeProductScreenState extends State<EditeProductScreen> {
               TextFormField(
                 maxLines: 6,
                 minLines: 3,
-                controller: descriptionController,
+                controller: productController.descriptionController,
                 decoration:
                     const InputDecoration(labelText: 'Product Description'),
                 validator: (value) {
@@ -108,7 +52,7 @@ class _EditeProductScreenState extends State<EditeProductScreen> {
                 height: 10,
               ),
               TextFormField(
-                controller: priceController,
+                controller: productController.priceController,
                 decoration: const InputDecoration(labelText: 'Price'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -122,7 +66,7 @@ class _EditeProductScreenState extends State<EditeProductScreen> {
                 height: 10,
               ),
               TextFormField(
-                controller: quantityController,
+                controller: productController.quantityController,
                 decoration: const InputDecoration(labelText: 'Quantity'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -139,9 +83,9 @@ class _EditeProductScreenState extends State<EditeProductScreen> {
                     return ButtonAll(
                         islogin: _controller.isLoadingadd,
                         function: () {
-                          submitProduct(context);
+                          productController.submitProduct(context);
                         },
-                        title: 'Edite Product');
+                        title: 'Add Product');
                   })
             ],
           ),

@@ -46,6 +46,8 @@ dependencies:
   path_provider: ^2.0.9
   build_runner: ^2.3.3
   hive_generator: ^1.1.1
+  qr_code_scanner: ^1.0.1
+  awesome_bottom_bar: ^1.2.4
 
 dev_dependencies:
   

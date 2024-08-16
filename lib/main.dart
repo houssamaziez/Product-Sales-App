@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_sales_app/App/Util/Go.dart';
+import 'package:product_sales_app/App/Util/Route/Go.dart';
 
-import 'App/Model/order.dart';
-import 'App/Model/product_data.dart';
+import 'App/Model/Local/order.dart';
+import 'App/Model/Local/product_data.dart';
 import 'App/Service/ConnectivityService.dart';
 // import 'App/myapp.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'App/View/Screens/Home/AddOrderScreen.dart';
+import 'App/View/Screens/Home/home.dart';
+import 'App/myapp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,17 +24,4 @@ void main() async {
   await Hive.openBox<Order>('ordersBox');
   Get.put(ConnectivityController());
   runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Order Management',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: AddOrderScreen(),
-    );
-  }
 }

@@ -30,6 +30,7 @@ ThemeData themeLight = ThemeData(
     backgroundColor: Color(0xff1073BA),
     elevation: 0,
     centerTitle: true,
+    toolbarHeight: 50,
     titleTextStyle: TextStyle(
       fontSize: 20.0,
       fontWeight: FontWeight.w600,

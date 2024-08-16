@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'product_data.g.dart';
+part 'Generated/product_data.g.dart';
 
 class ProductRespons {
   final String message;
@@ -91,5 +91,27 @@ class ProductData {
       'created_at': createdAt?.toIso8601String(),
       'updated_at': updatedAt?.toIso8601String(),
     };
+  }
+
+  ProductData copyWith({
+    int? id,
+    String? name,
+    String? description,
+    double? price,
+    int? quantity,
+    int? userId,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+  }) {
+    return ProductData(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      quantity: quantity ?? this.quantity,
+      userId: userId ?? this.userId,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+    );
   }
 }

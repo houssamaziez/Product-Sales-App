@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../Util/Go.dart';
+import '../../Util/Route/Go.dart';
 
 AppBar myappbar(BuildContext context, {String title = ""}) {
   return AppBar(

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:http/http.dart' as http;
 
-import '../View/Widgets/Messages/snack_bar.dart';
+import '../../View/Widgets/Messages/snack_bar.dart';
 
 class LoginController extends GetxController {
   bool isLoading = false;

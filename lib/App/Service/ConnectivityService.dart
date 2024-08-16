@@ -87,9 +87,24 @@ class ConnectivityController extends GetxController {
             },
             child: const Text('تم'),
           ),
+          TextButton(
+            onPressed: () {
+              _stopInternetCheck();
+              Get.back(); // Close the dialog
+              _isDialogShowing = false;
+            },
+            child: const Text('اكمال في الوضع اوفلين'),
+          ),
         ],
       ),
       barrierDismissible: false, // Prevent dialog dismissal by tapping outside
     );
+  }
+
+  void _stopInternetCheck() {
+    _connectivitySubscription.cancel();
+    _checkInternetTimer.cancel();
+    isConnected = false;
+    update(); // Notify GetBuilder to rebuild in offline mode
   }
 }

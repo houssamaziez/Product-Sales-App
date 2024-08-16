@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'Util/Theme/theme_light.dart';
-import 'View/Screens/Home/screen_all_product.dart';
+import 'View/Screens/Home/home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: themeLight,
-      home: ProductsScreen(),
+      home: const MyHomePage(),
     );
   }
 }

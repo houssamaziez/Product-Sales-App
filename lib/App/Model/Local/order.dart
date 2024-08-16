@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 import 'product_data.dart';
 
-part 'order.g.dart';
+part 'Generated/order.g.dart';
 
 @HiveType(typeId: 2)
 class Order {

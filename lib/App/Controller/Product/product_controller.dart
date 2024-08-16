@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:product_sales_app/App/Util/Go.dart';
+import 'package:product_sales_app/App/Util/Route/Go.dart';
 import 'package:product_sales_app/App/View/Widgets/Messages/snack_bar.dart';
 import 'dart:convert';
-import '../Model/product_data.dart';
-import '../RouteEndPoint/EndPoint.dart';
+import '../../Model/Local/product_data.dart';
+import '../../RouteEndPoint/EndPoint.dart';
 
 class ProductController extends GetxController {
   // Reactive statez
