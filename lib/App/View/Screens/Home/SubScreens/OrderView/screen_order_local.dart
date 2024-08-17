@@ -31,23 +31,23 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
         onPressed: () {
           _orderController.sendOrdersToServer(context);
         },
-        icon: Icon(
+        icon: const Icon(
           Icons.cloud_upload,
           size: 18,
         ),
-        label: Text(
+        label: const Text(
           'Send All Orders',
           style: TextStyle(fontSize: 12),
         ),
       ),
       appBar: AppBar(
-        title: Text('Order Pending'),
+        title: const Text('Order Pending'),
       ),
       body: ValueListenableBuilder(
         valueListenable: _ordersBox.listenable(),
         builder: (context, Box<Order> box, _) {
           if (box.values.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('No orders available'),
             );
           }
@@ -82,7 +82,7 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
                                 children: [
                                   Text(
                                     'Order : ${(index + 1)}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w700),
                                   ),
@@ -91,7 +91,7 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
                               iconColor: Theme.of(context).primaryColor,
                               trailing: Column(
                                 children: [
-                                  Spacer(),
+                                  const Spacer(),
                                   Text(
                                     ' ${formatDate(order!.orderDate.toString())}',
                                     style: TextStyle(
@@ -99,21 +99,21 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
                                         color: Theme.of(context).primaryColor,
                                         fontWeight: FontWeight.w700),
                                   ),
-                                  Icon(
+                                  const Icon(
                                     Icons.arrow_drop_down,
                                   ),
-                                  Spacer(),
+                                  const Spacer(),
                                 ],
                               ),
                               subtitle: Text(
                                 'Total Order Price:  ${totalPrice.toStringAsFixed(2)} DA ',
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.bold),
                               ),
                               children: [
                                 ListView.builder(
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: order.products.length,
                                   itemBuilder: (context, productIndex) {
                                     final product =
@@ -123,7 +123,7 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
                                         (productIndex + 1).toString() +
                                             '- ' +
                                             product.name,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.w700),
                                       ),
                                       subtitle: Column(
