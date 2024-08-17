@@ -81,7 +81,7 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
                               title: Row(
                                 children: [
                                   Text(
-                                    'Order ID: ${order!.orderId}',
+                                    'Order : ${(index + 1)}',
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w700),
@@ -93,7 +93,7 @@ class _OrderListScreenLocalState extends State<OrderListScreenLocal> {
                                 children: [
                                   Spacer(),
                                   Text(
-                                    ' ${formatDate(order.orderDate.toString())}',
+                                    ' ${formatDate(order!.orderDate.toString())}',
                                     style: TextStyle(
                                         fontSize: 10,
                                         color: Theme.of(context).primaryColor,

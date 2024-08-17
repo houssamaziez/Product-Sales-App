@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'flutter_spinkit.dart';
+import '../flutter_spinkit.dart';
 
 class ButtonAll extends StatelessWidget {
   ButtonAll(
@@ -30,20 +30,20 @@ class ButtonAll extends StatelessWidget {
           height: height,
           decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.all(Radius.circular(8))),
+              borderRadius: const BorderRadius.all(Radius.circular(8))),
           child: Center(
             child: Row(
               children: [
-                Spacer(),
+                const Spacer(),
                 if (islogin == true) spinkitwhite,
                 SizedBox(
                   width: islogin == true ? 10 : 0,
                 ),
                 Text(
                   islogin == true ? 'Verifying ...' : title,
-                  style: TextStyle(color: Colors.white),
+                  style: const TextStyle(color: Colors.white),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),

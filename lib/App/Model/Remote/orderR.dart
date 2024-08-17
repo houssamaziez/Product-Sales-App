@@ -3,14 +3,14 @@
 import 'product_sell.dart';
 
 //cahange folder name to Remote
-class OrderS {
+class OrderRemote {
   final int id;
   final String userId;
   final String orderId;
   final DateTime orderDate;
   final List<ProductSell> productSells;
 
-  OrderS({
+  OrderRemote({
     required this.id,
     required this.userId,
     required this.orderId,
@@ -18,12 +18,12 @@ class OrderS {
     required this.productSells,
   });
 
-  factory OrderS.fromJson(Map<String, dynamic> json) {
+  factory OrderRemote.fromJson(Map<String, dynamic> json) {
     var productList = json['product_sells'] as List;
     List<ProductSell> products =
         productList.map((i) => ProductSell.fromJson(i)).toList();
 
-    return OrderS(
+    return OrderRemote(
       id: json['id'],
       userId: json['user_id'],
       orderId: json['order_id'],

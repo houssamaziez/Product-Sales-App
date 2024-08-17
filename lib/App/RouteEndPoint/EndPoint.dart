@@ -3,11 +3,11 @@
 import '../Util/Const/url.dart';
 
 class Endpoint {
-  static String apiproductsadd = "${ApiUrl.urlHost}/products/add";
-  static String apiproductsedite = "${ApiUrl.urlHost}/products/update";
-  static String apiproductsDelete = "${ApiUrl.urlHost}/products/delete";
+  static String apiProductsadd = "${ApiUrl.urlHost}/products/add";
+  static String apiProductsedite = "${ApiUrl.urlHost}/products/update";
+  static String apiProductsDelete = "${ApiUrl.urlHost}/products/delete";
 
-  static String apiproductsgetAll = "${ApiUrl.urlHost}/products/all";
+  static String apiProductsgetAll = "${ApiUrl.urlHost}/products/all";
 // Order
   static String apiOrderadd = "${ApiUrl.urlHost}/orders/add";
   static String apiOrdergetAll = "${ApiUrl.urlHost}/orders";

@@ -7,7 +7,7 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        'assets/images/logo.png',
+        'assets/icons/logo.png',
         height: height,
       ),
     );

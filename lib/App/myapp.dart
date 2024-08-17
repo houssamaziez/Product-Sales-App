@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import 'Util/Theme/theme_light.dart';
 import 'View/Screens/Home/home.dart';
+import 'View/Screens/SplashScreen/screenStart.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: themeLight,
-      home: const MyHomePage(),
+      home: const ScreenStart(),
     );
   }
 }

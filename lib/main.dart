@@ -23,5 +23,5 @@ void main() async {
   Hive.registerAdapter(OrderAdapter());
   await Hive.openBox<Order>('ordersBox');
   Get.put(ConnectivityController());
-  runApp(MyApp());
+  runApp(const MyApp());
 }

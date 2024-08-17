@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../Model/Remote/orderS.dart';
+import '../../Model/Remote/orderR.dart';
 import '../../Model/Local/order.dart';
 import '../../Model/Local/product_data.dart';
 import 'package:product_sales_app/App/RouteEndPoint/EndPoint.dart';
@@ -11,7 +11,7 @@ import 'package:product_sales_app/App/RouteEndPoint/EndPoint.dart';
 import '../../View/Widgets/Messages/snack_bar.dart';
 
 class OrderController extends GetxController {
-  var orders = <OrderS>[].obs;
+  var orders = <OrderRemote>[].obs;
   var totalAllOrdersPrice = 0.0.obs;
   var isLoading = false.obs;
   bool isLoadingsend = false;
@@ -38,8 +38,8 @@ class OrderController extends GetxController {
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);
-        List<OrderS> fetchedOrders = (data['data'] as List)
-            .map((orderData) => OrderS.fromJson(orderData))
+        List<OrderRemote> fetchedOrders = (data['data'] as List)
+            .map((orderData) => OrderRemote.fromJson(orderData))
             .toList();
 
         orders.assignAll(fetchedOrders);

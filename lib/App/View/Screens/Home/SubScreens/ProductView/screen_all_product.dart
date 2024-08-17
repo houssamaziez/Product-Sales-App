@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:product_sales_app/App/Util/Route/Go.dart';
 import 'package:product_sales_app/App/Util/Style/stylecontainer.dart';
-import 'package:product_sales_app/App/View/Screens/Home/ScreensHome/ProductView/screen_add_product.dart';
-import 'package:product_sales_app/App/View/Screens/Home/ScreensHome/ProductView/screen_Edite_product.dart';
+import 'package:product_sales_app/App/View/Screens/Home/SubScreens/ProductView/screen_add_product.dart';
+import 'package:product_sales_app/App/View/Screens/Home/SubScreens/ProductView/screen_Edite_product.dart';
 import 'package:product_sales_app/App/View/Widgets/flutter_spinkit.dart';
 
 import '../../../../../Controller/Product/product_controller.dart';

@@ -4,7 +4,7 @@ import 'package:product_sales_app/App/Util/Route/Go.dart';
 
 import '../../../Util/Const/List/list_icon_botton.dart';
 import '../../../Util/Const/List/list_screens.dart';
-import 'ScreensHome/QRscaneView/screenScaneQR.dart';
+import 'SubScreens/QRscaneView/screenScaneQR.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
-          child: listscreenHome[visit]),
+          child: suplistscreenHome[visit]),
       bottomNavigationBar: BottomBarCreative(
         items: items,
         backgroundColor: Colors.white,

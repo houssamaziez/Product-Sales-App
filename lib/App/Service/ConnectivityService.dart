@@ -75,7 +75,7 @@ class ConnectivityController extends GetxController {
                 'assets/icons/wi-fi.png',
                 height: 110,
               ),
-              const Text('يرجى التحقق من اتصالك بالإنترنت.'),
+              const Text('Please check your internet connection.'),
             ],
           ),
         ),
@@ -85,7 +85,7 @@ class ConnectivityController extends GetxController {
               Get.back(); // Close the dialog
               _isDialogShowing = false;
             },
-            child: const Text('تم'),
+            child: const Text('Cancl'),
           ),
           TextButton(
             onPressed: () {
@@ -93,7 +93,7 @@ class ConnectivityController extends GetxController {
               Get.back(); // Close the dialog
               _isDialogShowing = false;
             },
-            child: const Text('اكمال في الوضع اوفلين'),
+            child: const Text('Complete in offline mode'),
           ),
         ],
       ),
@@ -101,6 +101,7 @@ class ConnectivityController extends GetxController {
     );
   }
 
+//TODO:check this feature:
   void _stopInternetCheck() {
     _connectivitySubscription.cancel();
     _checkInternetTimer.cancel();

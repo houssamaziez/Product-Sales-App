@@ -23,7 +23,7 @@ class ProductController extends GetxController {
   }) async {
     isLoadingadd = true; // Set loading to true
     update();
-    final url = Uri.parse(Endpoint.apiproductsadd);
+    final url = Uri.parse(Endpoint.apiProductsadd);
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -95,7 +95,7 @@ class ProductController extends GetxController {
   }) async {
     isLoadingadd = true; // Set loading to true
     update();
-    final url = Uri.parse(Endpoint.apiproductsedite +
+    final url = Uri.parse(Endpoint.apiProductsedite +
         '/$id?name=$name&description=$description&price=$price&quantity=$quantity');
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
@@ -154,7 +154,7 @@ class ProductController extends GetxController {
       isLoading = true;
       update();
       final response = await http.get(
-        Uri.parse(Endpoint.apiproductsgetAll),
+        Uri.parse(Endpoint.apiProductsgetAll),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -186,7 +186,7 @@ class ProductController extends GetxController {
     required int id,
   }) async {
     update();
-    final url = Uri.parse(Endpoint.apiproductsDelete + '/$id');
+    final url = Uri.parse(Endpoint.apiProductsDelete + '/$id');
     final Map<String, String> headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
